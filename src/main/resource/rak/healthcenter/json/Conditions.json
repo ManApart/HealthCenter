@@ -1,0 +1,44 @@
+[
+	{
+		"id": "common_cold",
+		"name": "Cold",
+		"symptoms": [
+			"stuffy_nose",
+			"congested"
+		]
+	},
+	{
+		"id": "broken_bone_arm",
+		"name": "Broken Arm",
+		"symptoms": [
+			"shock_minor",
+			"bleeding_external",
+			"lowered_mobility"
+		]
+	},
+	{
+		"id": "broken_bone_leg",
+		"name": "Broken Bone",
+		"symptoms": [
+			"shock_minor",
+			"bleeding_external",
+			"no_mobility"
+		]
+	},
+	{
+		"id": "cast",
+		"name": "Wearing a Cast",
+		"symptoms": [
+			"lowered_mobility_minor"
+		]
+	},
+	{
+		"id": "cast_removable",
+		"name": "Wearing a Cast",
+		"symptoms": [
+			"lowered_mobility_minor"
+		]
+	}
+
+
+]

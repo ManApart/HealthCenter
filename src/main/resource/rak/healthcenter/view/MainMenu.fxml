@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane onKeyTyped="#onKeyTyped" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rak.healthcenter.controllers.MainMenuController">
+	<columnConstraints>
+		<ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" />
+		<ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="200.0" />
+		<ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints vgrow="ALWAYS" />
+	</rowConstraints>
+	<children>
+		<TabPane fx:id="diagnoseTabs" minWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS">
+			<tabs>
+				<Tab text="Diagnose">
+					<content>
+						<GridPane fx:id="diagnoseGrid" vgap="20.0" />
+					</content>
+				</Tab>
+				<Tab fx:id="patientInfoTab" text="Patient Info">
+					<content>
+						<GridPane fx:id="patientInfoGrid" vgap="20.0" />
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+		<Pane fx:id="patientView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+		<TabPane fx:id="mainTabs" minWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+			<tabs>
+				<Tab text="Inspect">
+					<content>
+						<GridPane fx:id="inspectGrid" vgap="20.0" />
+					</content>
+				</Tab>
+
+				<Tab text="Treat">
+					<content>
+						<GridPane fx:id="treatGrid" vgap="20.0" />
+					</content>
+				</Tab>
+
+				<Tab fx:id="conditionsTab" text="Conditions">
+					<content>
+						<GridPane fx:id="conditionsGrid" vgap="20.0" />
+					</content>
+				</Tab>
+				<Tab fx:id="symptomsTab" text="Symptoms">
+					<content>
+						<ScrollPane maxHeight="-Infinity" prefHeight="600.0" styleClass="pink" stylesheets="@../css/MainMenu.css">
+							<content>
+								<!-- <FlowPane fx:id="symptomsGrid" prefHeight="200.0" prefWidth="200.0" /> -->
+								<!-- <GridPane fx:id="symptomsGrid" gridLinesVisible="true" vgap="20.0" /> -->
+								<GridPane fx:id="symptomsGrid" vgap="20.0" />
+							</content>
+						</ScrollPane>
+					</content>
+				</Tab>
+				<Tab fx:id="toolsTab" text="Tools">
+					<content>
+						<GridPane fx:id="toolsGrid" vgap="20.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+						</GridPane>
+					</content>
+				</Tab>
+				<Tab fx:id="treatmentsTab" text="Treatments">
+					<content>
+						<GridPane fx:id="treatmentsGrid" vgap="20.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+						</GridPane>
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</children>
+</GridPane>

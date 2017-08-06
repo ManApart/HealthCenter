@@ -1,0 +1,75 @@
+[
+	{
+		"id": "mri",
+		"name": "MRI",
+		"zoom": "NAKED_EYE",
+		"system": "MUSCULAR",
+		"default": true,
+		"treatments" : []
+	},
+	{
+		"id": "cast",
+		"name": "Cast Materials",
+		"default": true,
+		"treatments" : [
+			"cast"
+		]
+	},
+	{
+		"id": "medicine_cabinet_basic",
+		"name": "Basic Medicine Cabinet",
+		"default": true,
+		"treatments" : [
+			"common_cold_medicine"
+		]
+	},
+	{
+		"id": "xray",
+		"name": "X Ray",
+		"zoom": "NAKED_EYE",
+		"system": "SKELETAL",
+		"default": true,
+		"treatments" : []
+	},
+	{
+		"id": "blood_test_simple",
+		"name": "Blood Test",
+		"zoom": "NAKED_EYE",
+		"system": "CICULATORY_RESPITORY",
+		"default": true,
+		"treatments" : []
+	},
+	{
+		"id": "blood_test",
+		"name": "Blood Test",
+		"zoom": "MICROSCOPE",
+		"system": "CICULATORY_RESPITORY",
+		"treatments" : []
+	},
+	{
+		"id": "urine_sample",
+		"name": "Urine Sample",
+		"zoom": "NAKED_EYE",
+		"system": "DIGESTIVE",
+		"default": true,
+		"treatments" : []
+	},
+	{
+		"id": "urine_sample",
+		"name": "Urine Sample",
+		"zoom": "NAKED_EYE",
+		"system": "DIGESTIVE",
+		"default": true,
+		"treatments" : []
+	},
+	{
+		"id": "reaction_time_test",
+		"name": "Reaction Time Test",
+		"zoom": "NAKED_EYE",
+		"system": "NERVOUS",
+		"default": true,
+		"treatments" : []
+	}
+
+
+]

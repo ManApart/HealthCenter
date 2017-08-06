@@ -1,0 +1,12 @@
+.pink{
+  -fx-background-color: #CCFF99;
+	
+}
+
+.label-picture{
+  -fx-background-color: transparent;
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: contain;
+  -fx-pref-width: 48px;
+  -fx-pref-height: 48px;
+}

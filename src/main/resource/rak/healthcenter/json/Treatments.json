@@ -1,0 +1,31 @@
+[
+	{
+		"id": "cast",
+		"name": "Simple Cast",
+		"treatedConditions": [
+			"broken_bone_arm",
+			"broken_bone_leg"
+		],
+		"addedConditions": [
+			"cast"
+		]
+	},
+	{
+		"id": "cast_removal",
+		"name": "Remove Cast",
+		"treatedConditions": [
+			"cast_removable"
+		],
+		"addedConditions": []
+	},
+	{
+		"id": "common_cold_medicine",
+		"name": "Common Cold Medicine",
+		"treatedConditions": [
+			"common_cold"
+		],
+		"addedConditions": []
+	}
+
+
+]

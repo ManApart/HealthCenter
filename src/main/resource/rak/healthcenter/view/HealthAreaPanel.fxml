@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+	<columnConstraints>
+		<ColumnConstraints hgrow="NEVER" />
+      <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+	</rowConstraints>
+	<children>
+		<GridPane GridPane.halignment="CENTER">
+			<rowConstraints>
+				<RowConstraints vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Label fx:id="zoomNakedEye">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Off.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+				<Label fx:id="zoomMagnifyingGlass" GridPane.columnIndex="1">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Off.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+				<Label fx:id="zoomMicroscope" GridPane.columnIndex="2">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Off.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+				<Label fx:id="zoomMolecular" GridPane.columnIndex="3">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Off.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+			</children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+		</GridPane>
+		<Label fx:id="title" alignment="CENTER" text="AREA" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+	</children>
+</GridPane>

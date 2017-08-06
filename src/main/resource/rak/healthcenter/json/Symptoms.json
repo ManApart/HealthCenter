@@ -1,0 +1,100 @@
+[
+	{
+		"id": "stuffy_nose",
+		"name": "Stuffy Nose",
+		"system": "CICULATORY_RESPITORY",
+		"zoom": "NAKED_EYE",
+		"location": "HEAD",
+		"locationOverride" : false,
+		"effect": {
+			"type": "BREATHING",
+			"amount": -0.1
+		} 
+	},
+	{
+		"id": "congested",
+		"name": "Congested",
+		"system": "CICULATORY_RESPITORY",
+		"zoom": "NAKED_EYE",
+		"location": "TORSO",
+		"locationOverride" : false,
+		"effect": {
+			"type": "BREATHING",
+			"amount": -0.1
+		} 
+	},
+	{
+		"id": "shock_minor",
+		"name": "Minor Shock",
+		"system": "NERVOUS",
+		"zoom": "NAKED_EYE",
+		"location": "HEAD",
+		"locationOverride" : false,
+		"effect": {
+			"type": "FOCUS",
+			"amount": -0.50
+		} 
+	},
+	{
+		"id": "shock_major",
+		"name": "Major Shock",
+		"system": "NERVOUS",
+		"zoom": "NAKED_EYE",
+		"location": "HEAD",
+		"locationOverride" : false,
+		"effect": {
+			"type": "FOCUS",
+			"amount": -0.90
+		} 
+	},
+	{
+		"id": "bleeding_external",
+		"name": "Bleeding",
+		"system": "CICULATORY_RESPITORY",
+		"zoom": "NAKED_EYE",
+		"location": "TORSO",
+		"locationOverride" : true,
+		"effect": {
+			"type": "HEALTH",
+			"amount": -0.3
+		} 
+	},
+	{
+		"id": "lowered_mobility_minor",
+		"name": "Pain Moving",
+		"system": "SKELETAL",
+		"zoom": "NAKED_EYE",
+		"location": "LEG_RIGHT",
+		"locationOverride" : true,
+		"effect": {
+			"type": "MOBILITY",
+			"amount": -0.15
+		} 
+	},
+	{
+		"id": "lowered_mobility",
+		"name": "Pain Moving",
+		"system": "SKELETAL",
+		"zoom": "NAKED_EYE",
+		"location": "LEG_RIGHT",
+		"locationOverride" : true,
+		"effect": {
+			"type": "MOBILITY",
+			"amount": -0.30
+		} 
+	},
+	{
+		"id": "no_mobility",
+		"name": "Inability to Move",
+		"system": "SKELETAL",
+		"zoom": "NAKED_EYE",
+		"location": "LEG_RIGHT",
+		"locationOverride" : true,
+		"effect": {
+			"type": "MOBILITY",
+			"amount": -0.90
+		} 
+	}
+
+
+]

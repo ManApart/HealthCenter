@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+	<columnConstraints>
+		<ColumnConstraints halignment="LEFT" hgrow="NEVER" />
+      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+	</columnConstraints>
+	<children>
+		<Label fx:id="title" alignment="CENTER" text="Title" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="system1" alignment="CENTER" text="System:" GridPane.rowIndex="2" />
+      <Label fx:id="system" alignment="CENTER" text="SystemValue" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      </Label>
+      <Label fx:id="zoom1" alignment="CENTER" text="Zoom:" GridPane.rowIndex="3" />
+      <Label fx:id="zoom" alignment="CENTER" text="ZoomValue" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      </Label>
+      <Label fx:id="affectedLocation1" alignment="CENTER" text="Location:" GridPane.rowIndex="1" />
+      <Label fx:id="affectedLocation" alignment="CENTER" text="LocationValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      </Label>
+      <Label fx:id="effect" alignment="CENTER" text="Effect" GridPane.rowIndex="4">
+            </Label>
+      <Label fx:id="amount" alignment="CENTER" text="Amount" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            </Label>
+	</children>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" />
+      <RowConstraints minHeight="10.0" />
+      <RowConstraints minHeight="10.0" />
+      <RowConstraints minHeight="10.0" />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
