@@ -47,6 +47,26 @@ public class Symptom {
 		return clone;
 	}
 	
+	
+	
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object other){
+		if (other != null && other instanceof Symptom){
+			Symptom symptom = (Symptom) other;
+			if (id != null){
+				return id.equals(symptom.id);
+			} else {
+				return (id == null && symptom.id == null); 
+			}
+		}
+		return false;
+	}
+	
 	public String getName(){
 		return name;
 	}

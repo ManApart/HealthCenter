@@ -60,7 +60,7 @@ public class Patient {
 	}
 	
 	public boolean hasCondition(Condition condition){
-		return conditions.contains(conditions);
+		return conditions.contains(condition);
 	}
 	
 	public boolean hasSymptoms(HealthSystem system, Location location, ZoomLevel level){

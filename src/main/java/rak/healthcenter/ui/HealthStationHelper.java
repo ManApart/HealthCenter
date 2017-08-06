@@ -38,7 +38,7 @@ public class HealthStationHelper {
 
 
 	private void initializePatient() {
-		Condition condition = conditionParser.getCondition("common_cold", null);
+		Condition condition = conditionParser.getCondition("common_cold");
 		patient.contractCondition(condition);
 	}
 
@@ -94,6 +94,29 @@ public class HealthStationHelper {
 		patient.diagnoseSymptoms(currentSystem, location, currentZoom);
 		SymptomController.refreshDiagnoseGrid(this);
 		mainMenuController.setPatientView(currentSystem, currentZoom);
+	}
+
+	public void applyTreatment(Treatment treatment) {
+		cureConditions(treatment);
+		contractSideEffects(treatment);
+		SymptomController.refreshDiagnoseGrid(this);
+		mainMenuController.setPatientView(currentSystem, currentZoom);
+	}
+
+	private void cureConditions(Treatment treatment) {
+		for (String id : treatment.getTreatedConditionIds()){
+			Condition condition = conditionParser.getCondition(id);
+			if (patient.hasCondition(condition)){
+				patient.recoverFromCondition(condition);
+			}
+		}
+	}
+	
+	private void contractSideEffects(Treatment treatment) {
+		for (String id : treatment.getAddedConditionIds()){
+			Condition condition = conditionParser.getCondition(id);
+			patient.contractCondition(condition);
+		}
 	}
 
 }

@@ -29,12 +29,16 @@ public class TreatmentController {
 
 		createTreatmentLabels();
 	}
+	
+	@FXML
+	public void applyTreatment(){
+		healthStationHelper.applyTreatment(treatment);
+	}
 
 	private void createTreatmentLabels() {
 		labelGrid.getChildren().clear();
 		createLabels(treatment.getTreatedConditionIds(), 0, "Treated");
 		createLabels(treatment.getAddedConditionIds(), 1, "Side Effects");
-		
 	}
 
 	private void createLabels(List<String> ids, int column, String columnTitle) {

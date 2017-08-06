@@ -45,6 +45,24 @@ public class Condition {
 		return clone;
 	}
 	
+	@Override
+	public int hashCode() {
+	    return id.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other){
+		if (other != null && other instanceof Condition){
+			Condition condition = (Condition) other;
+			if (id != null){
+				return id.equals(condition.id);
+			} else {
+				return (id == null && condition.id == null); 
+			}
+		}
+		return false;
+	}
+	
 	public void addSymptom(Symptom symptom){
 		this.symptoms.add(symptom);
 	}
@@ -66,8 +84,10 @@ public class Condition {
 	}
 
 	public void setLocation(Location location) {
-		for (Symptom symptom: symptoms){
-			symptom.setLocationIfOverridable(location);
+		if (location != null){
+			for (Symptom symptom: symptoms){
+				symptom.setLocationIfOverridable(location);
+			}
 		}
 	}
 

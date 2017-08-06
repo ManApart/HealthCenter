@@ -16,13 +16,17 @@ public class ConditionParser {
 		return new ArrayList<>(conditions.values());
 	}
 	
+	public Condition getCondition(String id){
+		return getCondition(id, null);
+	}
+	
 	public Condition getCondition(String id, Location location){
-		Condition condition = getCondition(id).clone();
+		Condition condition = getConditionById(id).clone();
 		condition.setLocation(location);
 		return condition;
 	}
 	
-	private Condition getCondition(String id){
+	private Condition getConditionById(String id){
 		if (conditions.containsKey(id)){
 			return conditions.get(id);
 		}

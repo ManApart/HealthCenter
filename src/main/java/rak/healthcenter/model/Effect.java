@@ -9,6 +9,11 @@ public class Effect {
 	public Effect(){
 	}
 	
+	@Override
+	public String toString(){
+		return type.getName() + ": " + amount;
+	}
+	
 	public Effect(EffectType type){
 		this.type = type;
 	}
