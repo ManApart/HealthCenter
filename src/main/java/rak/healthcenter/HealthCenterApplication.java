@@ -1,7 +1,6 @@
 package rak.healthcenter;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import rak.utility.ResourceLoader;
 
 public class HealthCenterApplication extends Application {
 	private final static String MAIN_MENU = "MainMenu";
 	private static Stage primaryStage;
 	
 	public static void main(String[] args) {
+		ResourceLoader.setRootClass(HealthCenterApplication.class);
 		launch(args);
     }
 
@@ -24,7 +25,7 @@ public class HealthCenterApplication extends Application {
 		
         primaryStage.setTitle("Health Center");
         String pathToResource = "images/Logo Icon.png";
-        primaryStage.getIcons().add(new Image(getResourceAsStream(pathToResource)));
+        primaryStage.getIcons().add(new Image(ResourceLoader.getResourceAsStream(pathToResource)));
         setScene(MAIN_MENU);
         primaryStage.show();
 	}
@@ -45,10 +46,6 @@ public class HealthCenterApplication extends Application {
 		
 		Scene scene = new Scene(root);
 		return scene;
-	}
-	
-	public static InputStream getResourceAsStream(String pathToResource) {
-		return HealthCenterApplication.class.getResourceAsStream(pathToResource);
 	}
 	
 }

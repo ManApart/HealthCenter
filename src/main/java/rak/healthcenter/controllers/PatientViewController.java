@@ -9,12 +9,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import rak.healthcenter.HealthCenterApplication;
 import rak.healthcenter.model.Patient;
 import rak.healthcenter.model.enums.HealthSystem;
 import rak.healthcenter.model.enums.ZoomLevel;
 import rak.healthcenter.ui.HealthStationHelper;
 import rak.healthcenter.ui.LocationHighlightArea;
+import rak.utility.ResourceLoader;
 
 public class PatientViewController {
 	
@@ -85,7 +85,7 @@ public class PatientViewController {
 	}
 	
 	private void drawBackground(GraphicsContext gg, HealthSystem system) {
-		Image image = new Image(HealthCenterApplication.getResourceAsStream("images/systems/" + system.getImageName()));
+		Image image = new Image(ResourceLoader.getResourceAsStream("images/systems/" + system.getImageName()));
 		gg.drawImage(image, 0, 0, image.getWidth()*2.5, image.getHeight()*2.5);
 	}
 	
