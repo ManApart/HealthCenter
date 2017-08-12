@@ -11,6 +11,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import rak.healthcenter.HealthCenterApplication;
 import rak.healthcenter.model.enums.HealthSystem;
 import rak.healthcenter.model.enums.ZoomLevel;
 import rak.healthcenter.ui.HealthStationHelper;
@@ -93,7 +94,7 @@ public class MainMenuController {
 	}
 	
 	public static GridPane loadController(Object controller, String panelName) {
-		FXMLLoader loader = new FXMLLoader(MainMenuController.class.getResource(panelName));
+		FXMLLoader loader = new FXMLLoader(HealthCenterApplication.class.getResource(panelName));
 		loader.setController(controller);
 		try {
 			return loader.load();

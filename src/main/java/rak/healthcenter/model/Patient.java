@@ -63,6 +63,15 @@ public class Patient {
 		return conditions.contains(condition);
 	}
 	
+	public boolean hasCondition(String id){
+		for (Condition condition : conditions){
+			if (condition.getId().equals(id)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean hasSymptoms(HealthSystem system, Location location, ZoomLevel level){
 		return !getSymptoms(system, location, level).isEmpty();
 	}

@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import rak.healthcenter.HealthCenterApplication;
 import rak.healthcenter.model.Patient;
 import rak.healthcenter.model.enums.HealthSystem;
 import rak.healthcenter.model.enums.ZoomLevel;
@@ -84,7 +85,7 @@ public class PatientViewController {
 	}
 	
 	private void drawBackground(GraphicsContext gg, HealthSystem system) {
-		Image image = new Image(getClass().getResourceAsStream("../images/systems/" + system.getImageName()));
+		Image image = new Image(HealthCenterApplication.getResourceAsStream("images/systems/" + system.getImageName()));
 		gg.drawImage(image, 0, 0, image.getWidth()*2.5, image.getHeight()*2.5);
 	}
 	
@@ -110,7 +111,7 @@ public class PatientViewController {
 	}
 	
 	public static PatientViewController createGrid(Pane parentPane, HealthStationHelper healthStationHelper) {
-		String panelName = "../view/PatientViewPanel.fxml";
+		String panelName = "view/PatientViewPanel.fxml";
 		PatientViewController controller = new PatientViewController(healthStationHelper.getHealthStation().getPatient(), healthStationHelper);
 		GridPane grid = MainMenuController.loadController(controller, panelName);
 		parentPane.getChildren().add(grid);

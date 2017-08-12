@@ -69,7 +69,7 @@ public class ToolController {
 	}
 
 	public static void createGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
-		String panelName = "../view/ToolPanel.fxml";
+		String panelName = "view/ToolPanel.fxml";
 		int i=0;
 		for (Tool tool : healthStationHelper.getAllTools()) {
 			ToolController controller = new ToolController(tool, healthStationHelper);
@@ -82,7 +82,7 @@ public class ToolController {
 	public static void createInspectGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
 		inspectGrid = parentPane;
 		parentPane.getChildren().clear();
-		String panelName = "../view/ToolPanel.fxml";
+		String panelName = "view/ToolPanel.fxml";
 		int i=0;
 		for (Tool tool : healthStationHelper.getHealthStation().getAllTools()) {
 			if (tool.getAffectedSystem() != HealthSystem.NONE){

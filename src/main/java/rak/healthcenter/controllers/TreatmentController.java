@@ -53,7 +53,7 @@ public class TreatmentController {
 	}
 
 	public static void createGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
-		String panelName = "../view/TreatmentPanel.fxml";
+		String panelName = "view/TreatmentPanel.fxml";
 		int i=0;
 		for (Treatment treatment : healthStationHelper.getAllTreatments()) {
 			TreatmentController controller = new TreatmentController(treatment, healthStationHelper);
@@ -65,7 +65,7 @@ public class TreatmentController {
 	public static void createTreatGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
 		treatPane = parentPane;
 		parentPane.getChildren().clear();
-		String panelName = "../view/TreatmentPanel.fxml";
+		String panelName = "view/TreatmentPanel.fxml";
 		int i=0;
 		for (Tool tool : healthStationHelper.getHealthStation().getAllTools()) {
 			for (Treatment treatment : tool.getTreatments()){

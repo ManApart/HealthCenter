@@ -60,7 +60,7 @@ public class ConditionController {
 	}
 
 	public static void createGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
-		String panelName = "../view/ConditionPanel.fxml";
+		String panelName = "view/ConditionPanel.fxml";
 		int i=0;
 		for (Condition condition : healthStationHelper.getAllConditions()) {
 			ConditionController controller = new ConditionController(condition, healthStationHelper);
@@ -73,7 +73,7 @@ public class ConditionController {
 	public static void createPatientInfoGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
 		patientInfoGrid = parentPane;
 		parentPane.getChildren().clear();
-		String panelName = "../view/ConditionPanel.fxml";
+		String panelName = "view/ConditionPanel.fxml";
 		int i=0;
 		for (Condition condition : healthStationHelper.getHealthStation().getPatient().getConditions()) {
 			ConditionController controller = new ConditionController(condition, healthStationHelper);

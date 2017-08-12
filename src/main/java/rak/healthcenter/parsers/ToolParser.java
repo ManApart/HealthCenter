@@ -24,7 +24,7 @@ public class ToolParser {
 	
 	public void parseTools(TreatmentParser treatmentParser){
 		
-		String name = "../json/Tools.json";
+		String name = "json/Tools.json";
 		Tool[] tools = Parser.parseList(Tool[].class, name);
 		
 		addTreatments(tools, treatmentParser);

@@ -37,7 +37,7 @@ public class SymptomController {
 	}
 	
 	public static void createGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
-		String panelName = "../view/SymptomPanel.fxml";
+		String panelName = "view/SymptomPanel.fxml";
 		int i=0;
 		for (Symptom symptom: healthStationHelper.getAllSymptoms()) {
 			SymptomController controller = new SymptomController(symptom, healthStationHelper);
@@ -56,7 +56,7 @@ public class SymptomController {
 	
 	public static void refreshDiagnoseGrid(HealthStationHelper healthStationHelper) {
 		diagnoseGrid.getChildren().clear();
-		String panelName = "../view/SymptomPanel.fxml";
+		String panelName = "view/SymptomPanel.fxml";
 		int i=0;
 		for (Symptom symptom: healthStationHelper.getHealthStation().getPatient().getDiagnosedSymptoms()) {
 			SymptomController controller = new SymptomController(symptom, healthStationHelper);

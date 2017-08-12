@@ -22,7 +22,7 @@ public class SymptomParser {
 	}
 
 	public void parseSymptoms(){
-		String name = "../json/Symptoms.json";
+		String name = "json/Symptoms.json";
 		Symptom[] symptoms = Parser.parseList(Symptom[].class, name);
 		this.symptoms = mapSymptoms(symptoms);
 	}

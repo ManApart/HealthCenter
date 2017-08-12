@@ -35,7 +35,7 @@ public class ConditionParser {
 	
 	public void parseConditions(SymptomParser symptomParser){
 		
-		String name = "../json/Conditions.json";
+		String name = "json/Conditions.json";
 		Condition[] conditions = Parser.parseList(Condition[].class, name);
 		
 		addSymptoms(conditions, symptomParser);
