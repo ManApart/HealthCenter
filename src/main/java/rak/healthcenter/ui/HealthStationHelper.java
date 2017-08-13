@@ -24,7 +24,6 @@ import rak.utility.events.EventDirector;
 public class HealthStationHelper {
 	private MainMenuController mainMenuController;
 	private HealthStation healthStation = new HealthStation();
-	private Patient patient = new Patient();
 	private ConditionParser conditionParser = new ConditionParser();
 	private SymptomParser symptomParser = new SymptomParser();
 	private ToolParser toolParser = new ToolParser();
@@ -34,8 +33,10 @@ public class HealthStationHelper {
 	public HealthStationHelper() {
 		healthManager = new HealthManager(conditionParser);
 		parseResources();
-		initializePatient();
-		initializeHealthStation();
+		
+		Patient patient = new Patient();
+		initializePatient(patient);
+		initializeHealthStation(patient);
 	}
 
 	private void parseResources() {
@@ -45,12 +46,12 @@ public class HealthStationHelper {
 		toolParser.parseTools(treatmentParser);
 	}
 
-	private void initializePatient() {
+	private void initializePatient(Patient patient) {
 		Condition condition = conditionParser.getCondition("common_cold");
 		EventDirector.postEvent(new ContractConditionEvent(patient, condition));
 	}
 
-	private void initializeHealthStation() {
+	private void initializeHealthStation(Patient patient) {
 		healthStation.setPatient(patient);
 		healthManager.addPatient(patient);
 
@@ -86,12 +87,12 @@ public class HealthStationHelper {
 	}
 
 	public void diagnoseSymptoms(HealthSystem system, Location location, ZoomLevel level) {
-		healthManager.diagnoseSymptoms(patient, system, location, level);
+		healthManager.diagnoseSymptoms(healthStation.getPatient(), system, location, level);
 		SymptomController.refreshDiagnoseGrid(this);
 	}
 	
 	public void applyTreatment(Treatment treatment) {
-		healthManager.applyTreatment(patient, treatment);
+		healthManager.applyTreatment(healthStation.getPatient(), treatment);
 	}
 
 	public void addRandomConditions(int count) {

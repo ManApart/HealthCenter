@@ -3,10 +3,13 @@ package rak.healthcenter.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import rak.healthcenter.events.ContractConditionEvent;
+import rak.healthcenter.events.RecoverFromConditionEvent;
 import rak.healthcenter.model.Condition;
 import rak.healthcenter.model.NextCondition;
 import rak.healthcenter.model.Symptom;
 import rak.healthcenter.ui.HealthStationHelper;
+import rak.utility.events.EventDirector;
 
 public class ConditionController {
 	
@@ -71,11 +74,11 @@ public class ConditionController {
 	}
 	
 	private void addConditionToPatient() {
-		healthStationHelper.getHealthStation().getPatient().contractCondition(condition);
+		EventDirector.postEvent(new ContractConditionEvent(healthStationHelper.getHealthStation().getPatient(), condition));
 	}
 
 	private void removeConditionFromPatient() {
-		healthStationHelper.getHealthStation().getPatient().recoverFromCondition(condition);
+		EventDirector.postEvent(new RecoverFromConditionEvent(healthStationHelper.getHealthStation().getPatient(), condition, false));
 	}
 
 	public static void createGrid(GridPane parentPane, HealthStationHelper healthStationHelper) {
