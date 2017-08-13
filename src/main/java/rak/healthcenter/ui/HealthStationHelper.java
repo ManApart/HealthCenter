@@ -2,6 +2,7 @@ package rak.healthcenter.ui;
 
 import java.util.List;
 
+import rak.healthcenter.HealthManager;
 import rak.healthcenter.controllers.MainMenuController;
 import rak.healthcenter.controllers.SymptomController;
 import rak.healthcenter.model.Condition;
@@ -26,6 +27,7 @@ public class HealthStationHelper {
 	private SymptomParser symptomParser = new SymptomParser();
 	private ToolParser toolParser = new ToolParser();
 	private TreatmentParser treatmentParser = new TreatmentParser();
+	private HealthManager healthManager = new HealthManager();
 	
 	private HealthSystem currentSystem = HealthSystem.NONE;
 	private ZoomLevel currentZoom = ZoomLevel.NAKED_EYE;
@@ -117,6 +119,11 @@ public class HealthStationHelper {
 			Condition condition = conditionParser.getCondition(id);
 			patient.contractCondition(condition);
 		}
+	}
+
+
+	public void addRandomConditions(int count) {
+		System.out.println("Add " + count + " random condtions");
 	}
 
 }

@@ -5,7 +5,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import rak.healthcenter.events.TimePassEvent;
 import rak.healthcenter.ui.HealthStationHelper;
+import rak.utility.events.EventDirector;
 
 public class MainOptionsController {
 	private HealthStationHelper healthStationHelper;
@@ -60,12 +62,14 @@ public class MainOptionsController {
 	
 	@FXML
 	public void advanceAge(){
-		System.out.println("Advance time by " + parseInt(ageAmount.getText(), AGE_AMOUNT_DEFAULT));
+		int amount = parseInt(ageAmount.getText(), AGE_AMOUNT_DEFAULT);
+		EventDirector.postEvent(new TimePassEvent(amount));
 	}
 
 	@FXML
 	public void addRandomConditions(){
-		System.out.println("Add " + parseInt(conditionCount.getText(), CONDITION_COUNT_DEFAULT) + " random condtions");
+		int count = parseInt(conditionCount.getText(), CONDITION_COUNT_DEFAULT);
+		healthStationHelper.addRandomConditions(count);
 	}
 	
 
