@@ -29,7 +29,8 @@ public class MainMenuController {
 	@FXML private GridPane inspectGrid;
 	@FXML private GridPane diagnoseGrid;
 	@FXML private GridPane treatGrid;
-
+	@FXML private GridPane mainOptions;
+	
 	@FXML private Pane patientView;
 	
 	@FXML private TabPane mainTabs;
@@ -39,6 +40,8 @@ public class MainMenuController {
 	@FXML private Tab symptomsTab;
 	@FXML private Tab toolsTab;
 	@FXML private Tab treatmentsTab;
+	
+	@FXML private MainOptionsController mainOptionsController;
 	
 	private boolean showDebugTabs = true;
 	private HealthStationHelper healthStationHelper = new HealthStationHelper();
@@ -60,6 +63,8 @@ public class MainMenuController {
 		ToolController.createInspectGrid(inspectGrid, healthStationHelper);
 		
 		patientViewController = PatientViewController.createGrid(patientView, healthStationHelper);
+		
+		mainOptionsController.setHealthStationHelper(healthStationHelper);
 		
 		toggleDebugTabs();
 	}
