@@ -27,7 +27,7 @@ public class HealthStationHelper {
 	private SymptomParser symptomParser = new SymptomParser();
 	private ToolParser toolParser = new ToolParser();
 	private TreatmentParser treatmentParser = new TreatmentParser();
-	private HealthManager healthManager = new HealthManager();
+	private HealthManager healthManager = new HealthManager(conditionParser);
 	
 	private HealthSystem currentSystem = HealthSystem.NONE;
 	private ZoomLevel currentZoom = ZoomLevel.NAKED_EYE;
@@ -47,6 +47,7 @@ public class HealthStationHelper {
 
 	private void initializeHealthStation() {
 		healthStation.setPatient(patient);
+		healthManager.addPatient(patient);
 		
 		for (Tool tool : toolParser.getAllTools()){
 			if (tool.isDefault()){
@@ -120,7 +121,6 @@ public class HealthStationHelper {
 			patient.contractCondition(condition);
 		}
 	}
-
 
 	public void addRandomConditions(int count) {
 		System.out.println("Add " + count + " random condtions");

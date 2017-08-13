@@ -1,7 +1,7 @@
-package rak.healthcenter.events;
+package rak.healthcenter.listeners;
 
 import rak.healthcenter.HealthManager;
-import rak.utility.events.EventDirector;
+import rak.healthcenter.events.TimePassEvent;
 import rak.utility.events.EventListener;
 
 public class TimePassListener implements EventListener<TimePassEvent> {
@@ -9,7 +9,6 @@ public class TimePassListener implements EventListener<TimePassEvent> {
 	
 	public TimePassListener(HealthManager manager){
 		this.manager = manager;
-		EventDirector.registerListener(this);
 	}
 
 	@Override

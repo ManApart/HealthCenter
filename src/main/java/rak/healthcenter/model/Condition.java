@@ -32,6 +32,8 @@ public class Condition {
 	
 	private List<Symptom> symptoms = new ArrayList<>();
 	
+	private Location overrideLocation;
+	
 	@Override
 	public String toString(){
 		String message = getName() + ": ";
@@ -106,13 +108,29 @@ public class Condition {
 	public List<String> getSymptomIds(){
 		return new ArrayList<>(symptomIds);
 	}
+	
+	public void addAge(int amount){
+		this.age += amount;
+	}
+	
+	public boolean hasExceededLifeSpan(){
+		return lifeSpan !=0 && age >= lifeSpan;
+	}
 
 	public void setLocation(Location location) {
 		if (location != null){
+			overrideLocation = location;
 			for (Symptom symptom: symptoms){
 				symptom.setLocationIfOverridable(location);
 			}
 		}
+	}
+
+	/**
+	 * Returns an override location if it exists; will usually return null
+	 */
+	public Location getOverrideLocation() {
+		return overrideLocation;
 	}
 
 }
