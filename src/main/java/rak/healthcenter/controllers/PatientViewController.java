@@ -18,11 +18,13 @@ import rak.utility.ResourceLoader;
 
 public class PatientViewController {
 	
-//	@FXML private ImageView patientView;
 	@FXML private Pane patientView;
 	
 	private Patient patient;
 	private HealthStationHelper healthStationHelper;
+	
+	private static HealthSystem currentSystem = HealthSystem.NONE;
+	private static ZoomLevel currentZoom = ZoomLevel.NAKED_EYE;
 	
 	private static final int WIDTH_DEFAULT = 215;
 	private static final int HEIGHT_DEFAULT = 570;
@@ -39,7 +41,7 @@ public class PatientViewController {
 	@FXML
 	private void onClick(MouseEvent mouseEvent){
 		LocationHighlightArea area = getHighlightAreaFromClick(mouseEvent.getX(), mouseEvent.getY());
-		healthStationHelper.diagnoseSymptoms(area.getLocation());
+		healthStationHelper.diagnoseSymptoms(currentSystem, area.getLocation(), currentZoom);
 	}
 	
 	private LocationHighlightArea getHighlightAreaFromClick(double x, double y) {
@@ -53,6 +55,8 @@ public class PatientViewController {
 	}
 
 	public void setPatientView(HealthSystem system, ZoomLevel level){
+		currentSystem = system;
+		currentZoom = level;
 		drawView(system, level);
 	}
 
@@ -111,9 +115,11 @@ public class PatientViewController {
 	}
 	
 	public static PatientViewController createGrid(Pane parentPane, HealthStationHelper healthStationHelper) {
+		parentPane.getChildren().clear();
 		String panelName = "view/PatientViewPanel.fxml";
 		PatientViewController controller = new PatientViewController(healthStationHelper.getHealthStation().getPatient(), healthStationHelper);
 		GridPane grid = MainMenuController.loadController(controller, panelName);
+		controller.setPatientView(currentSystem, currentZoom);
 		parentPane.getChildren().add(grid);
 		return controller;
 	}

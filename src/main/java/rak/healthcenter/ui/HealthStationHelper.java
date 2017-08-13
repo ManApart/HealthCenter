@@ -5,6 +5,7 @@ import java.util.List;
 import rak.healthcenter.HealthManager;
 import rak.healthcenter.controllers.MainMenuController;
 import rak.healthcenter.controllers.SymptomController;
+import rak.healthcenter.events.ContractConditionEvent;
 import rak.healthcenter.model.Condition;
 import rak.healthcenter.model.HealthStation;
 import rak.healthcenter.model.Patient;
@@ -18,6 +19,7 @@ import rak.healthcenter.parsers.ConditionParser;
 import rak.healthcenter.parsers.SymptomParser;
 import rak.healthcenter.parsers.ToolParser;
 import rak.healthcenter.parsers.TreatmentParser;
+import rak.utility.events.EventDirector;
 
 public class HealthStationHelper {
 	private MainMenuController mainMenuController;
@@ -27,103 +29,75 @@ public class HealthStationHelper {
 	private SymptomParser symptomParser = new SymptomParser();
 	private ToolParser toolParser = new ToolParser();
 	private TreatmentParser treatmentParser = new TreatmentParser();
-	private HealthManager healthManager = new HealthManager(conditionParser);
-	
-	private HealthSystem currentSystem = HealthSystem.NONE;
-	private ZoomLevel currentZoom = ZoomLevel.NAKED_EYE;
-	
-	 public HealthStationHelper(){
-		 parseResources();
-		 initializePatient();
-		 initializeHealthStation();
-	 }
+	private HealthManager healthManager;
 
-
-	private void initializePatient() {
-		Condition condition = conditionParser.getCondition("common_cold");
-		patient.contractCondition(condition);
-	}
-
-
-	private void initializeHealthStation() {
-		healthStation.setPatient(patient);
-		healthManager.addPatient(patient);
-		
-		for (Tool tool : toolParser.getAllTools()){
-			if (tool.isDefault()){
-				healthStation.addTool(tool);
-			}
-		}
+	public HealthStationHelper() {
+		healthManager = new HealthManager(conditionParser);
+		parseResources();
+		initializePatient();
+		initializeHealthStation();
 	}
 
 	private void parseResources() {
-		symptomParser.parseSymptoms(); 
+		symptomParser.parseSymptoms();
 		conditionParser.parseConditions(symptomParser);
 		treatmentParser.parseTreatments();
 		toolParser.parseTools(treatmentParser);
 	}
 
-	public void setMainController(MainMenuController controller){
+	private void initializePatient() {
+		Condition condition = conditionParser.getCondition("common_cold");
+		EventDirector.postEvent(new ContractConditionEvent(patient, condition));
+	}
+
+	private void initializeHealthStation() {
+		healthStation.setPatient(patient);
+		healthManager.addPatient(patient);
+
+		for (Tool tool : toolParser.getAllTools()) {
+			if (tool.isDefault()) {
+				healthStation.addTool(tool);
+			}
+		}
+	}
+
+	public void setMainController(MainMenuController controller) {
 		this.mainMenuController = controller;
 	}
 
 	public List<Condition> getAllConditions() {
 		return conditionParser.getAllConditions();
 	}
-	
+
 	public List<Symptom> getAllSymptoms() {
 		return symptomParser.getAllSymptoms();
 	}
-	
+
 	public List<Treatment> getAllTreatments() {
 		return treatmentParser.getAllTreatments();
 	}
-	
+
 	public List<Tool> getAllTools() {
 		return toolParser.getAllTools();
 	}
-	
-	public HealthStation getHealthStation(){
+
+	public HealthStation getHealthStation() {
 		return healthStation;
 	}
-	
-	public void setPatientView(HealthSystem system, ZoomLevel level){
-		currentSystem = system;
-		currentZoom = level;
-		mainMenuController.setPatientView(system, level);
-	}
 
-	public void diagnoseSymptoms(Location location) {
-		patient.diagnoseSymptoms(currentSystem, location, currentZoom);
+	public void diagnoseSymptoms(HealthSystem system, Location location, ZoomLevel level) {
+		healthManager.diagnoseSymptoms(patient, system, location, level);
 		SymptomController.refreshDiagnoseGrid(this);
-		mainMenuController.setPatientView(currentSystem, currentZoom);
 	}
-
+	
 	public void applyTreatment(Treatment treatment) {
-		cureConditions(treatment);
-		contractSideEffects(treatment);
-		SymptomController.refreshDiagnoseGrid(this);
-		mainMenuController.setPatientView(currentSystem, currentZoom);
-	}
-
-	private void cureConditions(Treatment treatment) {
-		for (String id : treatment.getTreatedConditionIds()){
-			Condition condition = conditionParser.getCondition(id);
-			if (patient.hasCondition(condition)){
-				patient.recoverFromCondition(condition);
-			}
-		}
-	}
-	
-	private void contractSideEffects(Treatment treatment) {
-		for (String id : treatment.getAddedConditionIds()){
-			Condition condition = conditionParser.getCondition(id);
-			patient.contractCondition(condition);
-		}
+		healthManager.applyTreatment(patient, treatment);
 	}
 
 	public void addRandomConditions(int count) {
-		System.out.println("Add " + count + " random condtions");
+		System.out.println("Add " + count + " random condtions TODO");
 	}
+
+
 
 }

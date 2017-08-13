@@ -12,10 +12,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rak.healthcenter.HealthCenterApplication;
-import rak.healthcenter.model.enums.HealthSystem;
-import rak.healthcenter.model.enums.ZoomLevel;
+import rak.healthcenter.events.PatientStateChangedEvent;
+import rak.healthcenter.events.ToolSelectEvent;
+import rak.healthcenter.listeners.ui.PatientStateListener;
+import rak.healthcenter.listeners.ui.ToolSelectListener;
 import rak.healthcenter.ui.HealthStationHelper;
 import rak.healthcenter.ui.InputKey;
+import rak.utility.events.EventDirector;
 
 public class MainMenuController {
 
@@ -47,32 +50,44 @@ public class MainMenuController {
 	private HealthStationHelper healthStationHelper = new HealthStationHelper();
 	PatientViewController patientViewController;
 	
+	public MainMenuController(){
+		EventDirector.registerListener(new PatientStateListener(this));
+		EventDirector.registerListener(new ToolSelectListener(this));
+	}
+	
 	public void initialize(){
 		healthStationHelper.setMainController(this);
 		
-		ConditionController.createGrid(conditionsGrid, healthStationHelper);
-		ConditionController.createPatientInfoGrid(patientInfoGrid, healthStationHelper);
-
-		SymptomController.createGrid(symptomsGrid, healthStationHelper);
-		SymptomController.createDiagnoseGrid(diagnoseGrid, healthStationHelper);
-
-		TreatmentController.createGrid(treatmentsGrid, healthStationHelper);
-		TreatmentController.createTreatGrid(treatGrid, healthStationHelper);
-
-		ToolController.createGrid(toolsGrid, healthStationHelper);
-		ToolController.createInspectGrid(inspectGrid, healthStationHelper);
-		
-		patientViewController = PatientViewController.createGrid(patientView, healthStationHelper);
-		
-		mainOptionsController.setHealthStationHelper(healthStationHelper);
-		
-		toggleDebugTabs();
+		createPatientPanels();
+		createNonPatientPanels();
+		hideDebugTabs();
 	}
-	
-	
+
+	public void createPatientPanels() {
+		SymptomController.createDiagnoseGrid(diagnoseGrid, healthStationHelper);
+		TreatmentController.createTreatGrid(treatGrid, healthStationHelper);
+		patientViewController = PatientViewController.createGrid(patientView, healthStationHelper);
+		ConditionController.createPatientInfoGrid(patientInfoGrid, healthStationHelper);
+	}
+
+	public void createNonPatientPanels() {
+		ToolController.createInspectGrid(inspectGrid, healthStationHelper);
+		ConditionController.createGrid(conditionsGrid, healthStationHelper);
+		SymptomController.createGrid(symptomsGrid, healthStationHelper);
+		TreatmentController.createGrid(treatmentsGrid, healthStationHelper);
+		ToolController.createGrid(toolsGrid, healthStationHelper);
+		mainOptionsController.setHealthStationHelper(healthStationHelper);
+	}
+
 	@FXML
 	public void onKeyTyped(KeyEvent event){
 		if (InputKey.DEBUG.isKey(event.getCharacter())){
+			toggleDebugTabs();
+		}
+	}
+	
+	private void hideDebugTabs() {
+		if (showDebugTabs){
 			toggleDebugTabs();
 		}
 	}
@@ -94,10 +109,6 @@ public class MainMenuController {
 		}
 	}
 	
-	public void setPatientView(HealthSystem system, ZoomLevel level){
-		patientViewController.setPatientView(system, level);
-	}
-	
 	public static GridPane loadController(Object controller, String panelName) {
 		FXMLLoader loader = new FXMLLoader(HealthCenterApplication.class.getResource(panelName));
 		loader.setController(controller);
@@ -107,6 +118,14 @@ public class MainMenuController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void handle(PatientStateChangedEvent event) {
+		createPatientPanels();
+	}
+
+	public void handle(ToolSelectEvent event) {
+		patientViewController.setPatientView(event.getTool().getAffectedSystem(), event.getTool().getAffectedLevel());		
 	}
 	
 }

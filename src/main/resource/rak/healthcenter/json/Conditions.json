@@ -41,7 +41,7 @@
 	},
 	{
 		"id": "cast_removable",
-		"name": "Wearing a Cast",
+		"name": "Wearing a Loose Cast",
 		"symptoms": [
 			"lowered_mobility_minor"
 		]

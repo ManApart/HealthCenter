@@ -5,9 +5,11 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import rak.healthcenter.events.ToolSelectEvent;
 import rak.healthcenter.model.Tool;
 import rak.healthcenter.model.enums.HealthSystem;
 import rak.healthcenter.ui.HealthStationHelper;
+import rak.utility.events.EventDirector;
 
 public class ToolController {
 	
@@ -52,7 +54,7 @@ public class ToolController {
 		if (toggleTool){
 			toggleTool();
 		} else {
-			healthStationHelper.setPatientView(tool.getAffectedSystem(), tool.getAffectedLevel());
+			EventDirector.postEvent(new ToolSelectEvent(tool));
 		}
 		createInspectGrid(inspectGrid, healthStationHelper);
 	}
