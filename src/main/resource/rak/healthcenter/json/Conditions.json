@@ -28,8 +28,15 @@
 	{
 		"id": "cast",
 		"name": "Wearing a Cast",
+		"lifeSpan": 5,
 		"symptoms": [
 			"lowered_mobility_minor"
+		],
+		"nextConditions": [
+			{
+				"id": "cast_removable",
+				"chance": 1
+			}
 		]
 	},
 	{

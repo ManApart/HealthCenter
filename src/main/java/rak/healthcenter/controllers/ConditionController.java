@@ -4,13 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import rak.healthcenter.model.Condition;
+import rak.healthcenter.model.NextCondition;
 import rak.healthcenter.model.Symptom;
 import rak.healthcenter.ui.HealthStationHelper;
 
 public class ConditionController {
 	
 	@FXML private Label title;
+	@FXML private Label age;
 	@FXML private GridPane labelGrid;
+	@FXML private GridPane nextConditionGrid;
 	
 	private Condition condition;
 	private HealthStationHelper healthStationHelper;
@@ -25,20 +28,36 @@ public class ConditionController {
 	
 	public void initialize(){
 		title.setText(condition.getName());
+		setAge();
 		createSymptomLabels();
+		createNextConditionLabels();
+	}
+	
+	private void setAge(){
+		String ageMessage = "Age: " + condition.getAge();
+		if (condition.getLifeSpan() != 0){
+			ageMessage += "/" + condition.getLifeSpan();
+		}
+		age.setText(ageMessage);
 	}
 	
 	private void createSymptomLabels() {
 		labelGrid.getChildren().clear();
 		int i=0;
 		for (Symptom symptom : condition.getSymptoms()){
-			addSymptomLabel(symptom, i++);
+			Label label = new Label("-" + symptom.getName());
+			labelGrid.add(label, 0, i++);
 		}
 	}
-
-	private void addSymptomLabel(Symptom symptom, int i) {
-		Label label = new Label("-" + symptom.getName());
-		labelGrid.add(label, 0, i);
+	
+	private void createNextConditionLabels() {
+		nextConditionGrid.getChildren().clear();
+		int i=0;
+		for (NextCondition nextCondition : condition.getNextConditions()){
+			String message = nextCondition.getConditionId() + ": " + nextCondition.getChance() * 100 + "%"; 
+			Label label = new Label("-" + message);
+			nextConditionGrid.add(label, 0, i++);
+		}
 	}
 	
 	@FXML

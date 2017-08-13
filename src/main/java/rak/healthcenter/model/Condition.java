@@ -19,8 +19,16 @@ public class Condition {
 	@JsonProperty
 	private String name;
 	
+	@JsonProperty
+	private int lifeSpan;
+	
 	@JsonProperty("symptoms")
 	private List<String> symptomIds = new ArrayList<>();
+	
+	@JsonProperty
+	private List<NextCondition> nextConditions = new ArrayList<>();
+	
+	private int age;
 	
 	private List<Symptom> symptoms = new ArrayList<>();
 	
@@ -38,6 +46,10 @@ public class Condition {
 		Condition clone = new Condition();
 		clone.id = id;
 		clone.name = name;
+		clone.lifeSpan = lifeSpan;
+		
+		clone.nextConditions = new ArrayList<>(nextConditions);
+		
 		for (Symptom symptom : symptoms){
 			clone.addSymptom(symptom.clone());
 		}
@@ -79,6 +91,18 @@ public class Condition {
 		return id;
 	}
 	
+	public int getLifeSpan() {
+		return lifeSpan;
+	}
+
+	public List<NextCondition> getNextConditions() {
+		return nextConditions;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
 	public List<String> getSymptomIds(){
 		return new ArrayList<>(symptomIds);
 	}

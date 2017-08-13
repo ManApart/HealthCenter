@@ -49,15 +49,17 @@
 
 				<Tab fx:id="conditionsTab" text="Conditions">
 					<content>
-						<GridPane fx:id="conditionsGrid" vgap="20.0" />
+						<ScrollPane maxHeight="-Infinity" prefHeight="600.0" styleClass="pink" stylesheets="@../css/MainMenu.css">
+							<content>
+								<GridPane fx:id="conditionsGrid" vgap="20.0" />
+							</content>
+						</ScrollPane>
 					</content>
 				</Tab>
 				<Tab fx:id="symptomsTab" text="Symptoms">
 					<content>
 						<ScrollPane maxHeight="-Infinity" prefHeight="600.0" styleClass="pink" stylesheets="@../css/MainMenu.css">
 							<content>
-								<!-- <FlowPane fx:id="symptomsGrid" prefHeight="200.0" prefWidth="200.0" /> -->
-								<!-- <GridPane fx:id="symptomsGrid" gridLinesVisible="true" vgap="20.0" /> -->
 								<GridPane fx:id="symptomsGrid" vgap="20.0" />
 							</content>
 						</ScrollPane>
