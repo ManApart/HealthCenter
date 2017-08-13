@@ -125,7 +125,7 @@ public class MainMenuController {
 	}
 
 	public void handle(ToolSelectEvent event) {
-		patientViewController.setPatientView(event.getTool().getAffectedSystem(), event.getTool().getAffectedLevel());		
+		patientViewController.drawView();		
 	}
 	
 }

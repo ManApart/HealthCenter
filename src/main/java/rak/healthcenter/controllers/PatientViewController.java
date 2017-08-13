@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import rak.healthcenter.model.Patient;
+import rak.healthcenter.model.Tool;
 import rak.healthcenter.model.enums.HealthSystem;
 import rak.healthcenter.model.enums.ZoomLevel;
 import rak.healthcenter.ui.HealthStationHelper;
@@ -35,7 +36,7 @@ public class PatientViewController {
 	}
 	
 	public void initialize(){
-		drawView(HealthSystem.NONE, ZoomLevel.NAKED_EYE);
+		drawView();
 	}
 	
 	@FXML
@@ -54,16 +55,14 @@ public class PatientViewController {
 		return null;
 	}
 
-	public void setPatientView(HealthSystem system, ZoomLevel level){
-		currentSystem = system;
-		currentZoom = level;
-		drawView(system, level);
-	}
-
-	public void drawView(HealthSystem system, ZoomLevel level){
+	public void drawView(){
 		GraphicsContext gg = createGraphicsContext();
-		drawBackground(gg, system);
-		drawVisibleSymptoms(gg, system, level);
+		Tool tool = healthStationHelper.getHealthStation().getCurrentTool();
+		if (tool == null){
+			tool = new Tool();
+		}
+		drawBackground(gg, tool.getAffectedSystem());
+		drawVisibleSymptoms(gg, tool.getAffectedSystem(),  tool.getAffectedLevel());
 //		drawAllSymptoms(gg);
 	}
 
@@ -119,7 +118,7 @@ public class PatientViewController {
 		String panelName = "view/PatientViewPanel.fxml";
 		PatientViewController controller = new PatientViewController(healthStationHelper.getHealthStation().getPatient(), healthStationHelper);
 		GridPane grid = MainMenuController.loadController(controller, panelName);
-		controller.setPatientView(currentSystem, currentZoom);
+		controller.drawView();
 		parentPane.getChildren().add(grid);
 		return controller;
 	}

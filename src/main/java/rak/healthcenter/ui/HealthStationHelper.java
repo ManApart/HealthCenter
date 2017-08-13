@@ -86,6 +86,7 @@ public class HealthStationHelper {
 		return healthStation;
 	}
 
+	//TODO Pass health station to health manager instead of these variables
 	public void diagnoseSymptoms(HealthSystem system, Location location, ZoomLevel level) {
 		healthManager.diagnoseSymptoms(healthStation.getPatient(), system, location, level);
 		SymptomController.refreshDiagnoseGrid(this);
