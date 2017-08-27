@@ -20,14 +20,14 @@
 	<children>
 		<TabPane fx:id="diagnoseTabs" minWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS">
 			<tabs>
-				<Tab text="Main Options">
-					<content>
-						<fx:include fx:id="mainOptions" source="MainOptions.fxml" />
-					</content>
-				</Tab>
 				<Tab text="Diagnose">
 					<content>
 						<GridPane fx:id="diagnoseGrid" vgap="20.0" />
+					</content>
+				</Tab>
+				<Tab text="Main Options">
+					<content>
+						<fx:include fx:id="mainOptions" source="MainOptions.fxml" />
 					</content>
 				</Tab>
 				<Tab fx:id="patientInfoTab" text="Patient Info">
