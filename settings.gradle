@@ -1,0 +1,4 @@
+rootProject.name = 'HealthCenter'
+
+include ":utility"
+project(":utility").projectDir = file("../StarshipUtility")

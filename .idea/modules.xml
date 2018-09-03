@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HealthCenter.iml" filepath="$PROJECT_DIR$/HealthCenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HealthCenter_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HealthCenter_main.iml" group="HealthCenter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HealthCenter_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HealthCenter_test.iml" group="HealthCenter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1015864382/utility.iml" filepath="$PROJECT_DIR$/.idea/modules/-1015864382/utility.iml" group="utility" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1015864382/utility_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1015864382/utility_main.iml" group="utility" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1015864382/utility_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1015864382/utility_test.iml" group="utility" />
+    </modules>
+  </component>
+</project>

@@ -13,8 +13,7 @@ public class Parser {
 		try {
 			InputStream in = ResourceLoader.getResourceAsStream(name);
 			ObjectMapper mapper = new ObjectMapper();
-			E[] list = mapper.readValue(in, resultClass);
-			return list;
+            return mapper.readValue(in, resultClass);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
